@@ -36,3 +36,10 @@ root.controller("loginController", ["$scope", "$http",function( $scope, $http ) 
 	}
 
 }]);
+
+root.controller("logoutController", ["$scope", "$http",function( $scope, $http ) {
+	$('#LogoutBtn').click(function (e) {
+		window.location.href = "/";
+	})
+
+}]);
