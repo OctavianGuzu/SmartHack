@@ -18,14 +18,14 @@ root.controller("loginController", ["$scope", "$http",function( $scope, $http ) 
 				}
 			});
 		}
-	})
+	});
 
 	$('#registerAcc').click(function (e) {
 		window.location.href = '/register';
-	})
+	});
 	$('#forgotPass').click(function (e) {
 		window.location.href = '/forgot-pass';
-	})
+	});
 
 	$scope.checkLoogin = function(email, pass, cb) {
 		var url = "/checkLogin?email=" + email + "&pass=" + pass;
@@ -40,16 +40,18 @@ root.controller("loginController", ["$scope", "$http",function( $scope, $http ) 
 
 dash.controller("dashboardController", ["$scope", "$http",function( $scope, $http ) {
 	$(document).ready(function(e) {
-		console.log("First");
 		$scope.fillTasks();
 	});
 
 	$scope.fillTasks = function() {
 		var getTaskUrl = "/fetchTasks";
-		console.log("da");
 		$http.get(getTaskUrl)
 			.then(function(response) {
-				console.table(response);
+
+				//todo: query for tasks
+				$tasks = "";
+
+                $('#dataTable').append($tasks);
 		})
 	}
 }]);
