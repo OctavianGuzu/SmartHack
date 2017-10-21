@@ -78,8 +78,6 @@ router.get('/fetchTasks', function (req, res) {
 			res.json(response);
 		} else {
 			if(data.length > 0) {
-				console.log(data);
-				console.log(globalFullName);
 				response.data = data;
                 res.json(response);
 			} else {
