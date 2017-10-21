@@ -297,9 +297,41 @@
           </div>
         </div>
       </div>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
         <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="10" hidden></canvas>
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Assignee</th>
+                  <th>Assigner</th>
+                  <th>Due date</th>
+                  <th>Date created</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+      
+        
       <div class="row">
         <div class="col-lg-8">
           <!-- Example Bar Chart Card-->
@@ -325,209 +357,56 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
+
           <!-- Card Columns Example Social Feed-->
           <div class="mb-0 mt-4">
-            <i class="fa fa-newspaper-o"></i> News Feed</div>
-          <hr class="mt-2">
-          <div class="card-columns">
-            <!-- Example Social Card-->
-            <div class="card mb-3">
-              <a href="#">
-                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=610" alt="">
-              </a>
-              <div class="card-body">
-                <h6 class="card-title mb-1"><a href="#">David Miller</a></h6>
-                <p class="card-text small">These waves are looking pretty good today!
-                  <a href="#">#surfsup</a>
-                </p>
-              </div>
-              <hr class="my-0">
-              <div class="card-body py-2 small">
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-comment"></i>Comment</a>
-                <a class="d-inline-block" href="#">
-                  <i class="fa fa-fw fa-share"></i>Share</a>
-              </div>
-              <hr class="my-0">
-              <div class="card-body small bg-faded">
-                <div class="media">
-                  <img class="d-flex mr-3" src="http://placehold.it/45x45" alt="">
-                  <div class="media-body">
-                    <h6 class="mt-0 mb-1"><a href="#">John Smith</a></h6>Very nice! I wish I was there! That looks amazing!
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item">
-                        <a href="#">Like</a>
-                      </li>
-                      <li class="list-inline-item">·</li>
-                      <li class="list-inline-item">
-                        <a href="#">Reply</a>
-                      </li>
-                    </ul>
-                    <div class="media mt-3">
-                      <a class="d-flex pr-3" href="#">
-                        <img src="http://placehold.it/45x45" alt="">
-                      </a>
-                      <div class="media-body">
-                        <h6 class="mt-0 mb-1"><a href="#">David Miller</a></h6>Next time for sure!
-                        <ul class="list-inline mb-0">
-                          <li class="list-inline-item">
-                            <a href="#">Like</a>
-                          </li>
-                          <li class="list-inline-item">·</li>
-                          <li class="list-inline-item">
-                            <a href="#">Reply</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer small text-muted">Posted 32 mins ago</div>
-            </div>
-            <!-- Example Social Card-->
-            <div class="card mb-3">
-              <a href="#">
-                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=180" alt="">
-              </a>
-              <div class="card-body">
-                <h6 class="card-title mb-1"><a href="#">John Smith</a></h6>
-                <p class="card-text small">Another day at the office...
-                  <a href="#">#workinghardorhardlyworking</a>
-                </p>
-              </div>
-              <hr class="my-0">
-              <div class="card-body py-2 small">
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-comment"></i>Comment</a>
-                <a class="d-inline-block" href="#">
-                  <i class="fa fa-fw fa-share"></i>Share</a>
-              </div>
-              <hr class="my-0">
-              <div class="card-body small bg-faded">
-                <div class="media">
-                  <img class="d-flex mr-3" src="http://placehold.it/45x45" alt="">
-                  <div class="media-body">
-                    <h6 class="mt-0 mb-1"><a href="#">Jessy Lucas</a></h6>Where did you get that camera?! I want one!
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item">
-                        <a href="#">Like</a>
-                      </li>
-                      <li class="list-inline-item">·</li>
-                      <li class="list-inline-item">
-                        <a href="#">Reply</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer small text-muted">Posted 46 mins ago</div>
-            </div>
-            <!-- Example Social Card-->
-            <div class="card mb-3">
-              <a href="#">
-                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=281" alt="">
-              </a>
-              <div class="card-body">
-                <h6 class="card-title mb-1"><a href="#">Jeffery Wellings</a></h6>
-                <p class="card-text small">Nice shot from the skate park!
-                  <a href="#">#kickflip</a>
-                  <a href="#">#holdmybeer</a>
-                  <a href="#">#igotthis</a>
-                </p>
-              </div>
-              <hr class="my-0">
-              <div class="card-body py-2 small">
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-comment"></i>Comment</a>
-                <a class="d-inline-block" href="#">
-                  <i class="fa fa-fw fa-share"></i>Share</a>
-              </div>
-              <div class="card-footer small text-muted">Posted 1 hr ago</div>
-            </div>
-            <!-- Example Social Card-->
-            <div class="card mb-3">
-              <a href="#">
-                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=185" alt="">
-              </a>
-              <div class="card-body">
-                <h6 class="card-title mb-1"><a href="#">David Miller</a></h6>
-                <p class="card-text small">It's hot, and I might be lost...
-                  <a href="#">#desert</a>
-                  <a href="#">#water</a>
-                  <a href="#">#anyonehavesomewater</a>
-                  <a href="#">#noreally</a>
-                  <a href="#">#thirsty</a>
-                  <a href="#">#dehydration</a>
-                </p>
-              </div>
-              <hr class="my-0">
-              <div class="card-body py-2 small">
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-                <a class="mr-3 d-inline-block" href="#">
-                  <i class="fa fa-fw fa-comment"></i>Comment</a>
-                <a class="d-inline-block" href="#">
-                  <i class="fa fa-fw fa-share"></i>Share</a>
-              </div>
-              <hr class="my-0">
-              <div class="card-body small bg-faded">
-                <div class="media">
-                  <img class="d-flex mr-3" src="http://placehold.it/45x45" alt="">
-                  <div class="media-body">
-                    <h6 class="mt-0 mb-1"><a href="#">John Smith</a></h6>The oasis is a mile that way, or is that just a mirage?
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item">
-                        <a href="#">Like</a>
-                      </li>
-                      <li class="list-inline-item">·</li>
-                      <li class="list-inline-item">
-                        <a href="#">Reply</a>
-                      </li>
-                    </ul>
-                    <div class="media mt-3">
-                      <a class="d-flex pr-3" href="#">
-                        <img src="http://placehold.it/45x45" alt="">
-                      </a>
-                      <div class="media-body">
-                        <h6 class="mt-0 mb-1"><a href="#">David Miller</a></h6>
-                        <img class="img-fluid w-100 mb-1" src="https://unsplash.it/700/450?image=789" alt="">I'm saved, I found a cactus. How do I open this thing?
-                        <ul class="list-inline mb-0">
-                          <li class="list-inline-item">
-                            <a href="#">Like</a>
-                          </li>
-                          <li class="list-inline-item">·</li>
-                          <li class="list-inline-item">
-                            <a href="#">Reply</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer small text-muted">Posted yesterday</div>
-            </div>
-          </div>
-          <!-- /Card Columns-->
+           <i class="fa fa-newspaper-o"></i> Message Board</div>
+         <hr class="mt-2">
+         <div class="card-columns">
+           <!-- Example Social Card-->
+           <div class="card mb-3">
+             <a href="#">
+               <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=610" alt="">
+             </a>
+             <div class="card-body">
+               <h6 class="card-title mb-1"><a href="#">Peter Lupei</a></h6>
+               <p class="card-text small">What about this place for a teambuilding?</p>
+             </div>
+           </div>
+           <!-- Example Social Card-->
+           <div class="card mb-3">
+             <a href="#">
+               <img class="card-img-top img-fluid w-100" src="https://phescreening.blog.gov.uk/wp-content/uploads/sites/152/2015/07/KPI_graph_illustration-620x520.png" alt="">
+             </a>
+             <div class="card-body">
+               <h6 class="card-title mb-1"><a href="#">Ion Popescu</a></h6>
+               <p class="card-text small">We need to have a look at our KPI from last month!</p>
+             </div>
+           </div>
+           <!-- Example Social Card-->
+           <div class="card mb-3">
+             <a href="#">
+               <img class="card-img-top img-fluid w-100" src="https://i.ytimg.com/vi/Pfiz9hHfSVg/hqdefault.jpg" alt="">
+             </a>
+             <div class="card-body">
+               <h6 class="card-title mb-1"><a href="#">Arsenie Covaci</a></h6>
+               <p class="card-text small">I have some issues with the feature I'm assigned to...</p>
+             </div>
+           </div>
+           <!-- Example Social Card-->
+           <div class="card mb-3">
+             <a href="#">
+               <img class="card-img-top img-fluid w-100" src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png" alt="">
+             </a>
+             <div class="card-body">
+               <h6 class="card-title mb-1"><a href="#">Valeriu Amariei</a></h6>
+               <p class="card-text small">New training from Microsoft!!</p>
+             </div>
+           </div>
+         </div>
         </div>
+
         <div class="col-lg-4">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
-            <div class="card-body">
-              <canvas id="myPieChart" width="100%" height="100"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-          </div>
-          <!-- Example Notifications Card-->
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-bell-o"></i> Feed Example</div>
@@ -576,42 +455,34 @@
               <a class="list-group-item list-group-item-action" href="#">View all activity...</a>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
           </div>
-        </div>
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
+            <div class="card-body">
+              <canvas id="myPieChart" width="100%" height="100"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+        
+
       </div>
-      <!-- Example DataTables Card-->
-      <div class="card mb-3">
+
+
+          
+        </div>
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-area-chart"></i> Area Chart Example</div>
         <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Assignee</th>
-                  <th>Assigner</th>
-                  <th>Due date</th>
-                  <th>Date created</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <canvas id="myAreaChart" width="100%" height="30"></canvas>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
+
+      
     </div>
+
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
@@ -643,6 +514,7 @@
         </div>
       </div>
     </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
