@@ -21,4 +21,15 @@ router.get('/checkLogin', function (req, res) {
 	res.json(response);
 });
 
+router.get('/fetchTasks', function (req, res) {
+
+    var response = {
+        status_code : 0,
+        status_message : "success",
+        data : "Here there should be some tasks"
+    };
+    console.log("service");
+    res.json(response);
+});
+
 module.exports = router;
