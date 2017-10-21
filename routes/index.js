@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var MongoConnection = require( "./lib/mongo_smart" );
 var sha256 = require('sha256');
+var globalFullName = "";
 
 var MongoConnectionObj = new MongoConnection(function (err) {
 	if (err) {
@@ -44,6 +45,8 @@ router.get('/checkLogin', function (req, res) {
 					if(data.length > 0) {
 						var hash = sha256(req.query.pass);
 						if(hash == data[0].pass) {
+							globalFullName = "" + data[0].prenume + " "  + data[0].nume;
+                            console.log(globalFullName);
 							response.data = true;
 							res.json(response);
 						}
@@ -65,24 +68,26 @@ router.get('/fetchTasks', function (req, res) {
 	var response = {
         status_code : 0,
         status_message : "success",
-        data : tasks
+        data : ""
     };
 
-    MongoConnectionObj.queryFetchTasks({}, function(err, data) {
-            if (err) {
-                response.data = false;
+    MongoConnectionObj.queryFetchTasks({Assignee: globalFullName}, function(err, data) {
+    	if (err) {
+			response.data = false;
+			console.log("Err");
+			res.json(response);
+		} else {
+			if(data.length > 0) {
+				console.log(data);
+				console.log(globalFullName);
+				response.data = data;
                 res.json(response);
-            } else {
-                if(data.length > 0) {
-                    console.log(data);
-                } else {
-                    response.data = false;
-                    res.json(response);
-                }
-            }
+			} else {
+				response.data = false;
+				res.json(response);
+			}
+		}
     });
-
-    res.json(response);
 });
 
 module.exports = router;
