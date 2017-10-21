@@ -55,10 +55,13 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 				var tasks = response["data"].data;
                 console.log(tasks);
                 for (i = 0; i < tasks.length; i++) {
-                    appendToHtml += '<tr><td>' + tasks[i]["name"] +
+                    appendToHtml += 
+                    	'<tr><td>' + tasks[i]["id"] +
+                    	'<tr><td>' + tasks[i]["name"] +
 						'</td><td>' + tasks[i]["Assignee"] +
 						'</td><td>' + tasks[i]["Assigner"] +
 						'</td><td>' + tasks[i]["Due Date"] +
+						'</td><td>' + tasks[i]["Priority"] +
 						'</td><td>' + tasks[i]["Date Created"] +
 						'</td><td>' + tasks[i]["Description"] +	'</td></tr>';
                 }
