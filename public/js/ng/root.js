@@ -39,6 +39,9 @@ root.controller("loginController", ["$scope", "$http",function( $scope, $http ) 
 }]);
 
 dash.controller("dashboardController", ["$scope", "$http",function( $scope, $http ) {
+	$scope.insertSucc = false;
+	$scope.insertFail = false;
+
 	$(document).ready(function(e) {
 		$scope.fillTasks();
 	});
@@ -65,5 +68,38 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 
     $('#LogoutBtn').click(function (e) {
         window.location.href = "/";
+    })
+
+
+    $('#TaskInsertBtn').click(function (e) {
+    	$scope.insertSucc = false;
+		$scope.insertFail = false;
+
+    	var taskName = $('#InputNameTask').val();
+    	var assignee = $('#InputAssigneeTask').val();
+    	var assigner = $('#InputAssignerTask').val();
+    	var dueDate = $('#InputDdateTask').val();
+    	var descriptionTask = $('#InputDescriptionTask').val();
+
+    	if(taskName != "" && assignee != "" && assigner &&
+    		dueDate != "" && descriptionTask != "") {
+    		var url="/addTask?taskName=" + taskName +
+    				"&assignee=" + assignee +
+    				"&assigner=" + assigner +
+    				"&dueDate=" + dueDate +
+    				"&descriptionTask=" + descriptionTask;
+    		$http.get(url)
+    			.then(function(response) {
+    				//TODO afisare succes pentru inserare
+    				$scope.$apply(function () {
+    					$scope.insertSucc = true;
+         			});
+    				
+    			})
+    	} else {
+    		$scope.$apply(function () {
+    				$scope.insertFail = true;
+         	});
+    	}
     })
 }]);
