@@ -240,7 +240,7 @@
               </div>
               <div class="mr-5">26 New Messages!</div>
             </div>
-            <a id="goToTasks" class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -638,7 +638,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <button id="LogoutBtn" type="button" class="btn btn-primary">Logout</button>
           </div>
         </div>
       </div>
@@ -657,10 +657,18 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin/sb-admin-charts.min.js"></script>
-  </div>
 
-  <script src="vendor/angular/angular.min.js"></script>
-  <script src="vendor/angular/angular-route.js"></script>
-  <script src="js/ng/root.js"></script>
+    <!-- Bootstrap core JavaScript-->
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular/angular-route.js"></script>
+
+    <script src="js/ng/root.js"></script>
+  </div>
 </body>
 </html>

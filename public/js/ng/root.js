@@ -38,6 +38,13 @@ root.controller("loginController", ["$scope", "$http",function( $scope, $http ) 
 
 }]);
 
+dash.controller("logoutController", ["$scope", "$http",function( $scope, $http ) {
+	$('#LogoutBtn').click(function (e) {
+		window.location.href = "/";
+	})
+
+}]);
+
 dash.controller("dashboardController", ["$scope", "$http",function( $scope, $http ) {
 	$(document).ready(function(e) {
 		$scope.fillTasks();
