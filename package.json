@@ -10,5 +10,10 @@
     },
     "scripts": {
         "start": "node index.js"
+    },
+    "dependencies": {
+        "ejs": "^2.5.7",
+        "express": "^4.16.2",
+        "logger": "0.0.1"
     }
 }
