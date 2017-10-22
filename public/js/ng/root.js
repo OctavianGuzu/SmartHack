@@ -286,4 +286,29 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
         	scrollTop: $("#new-message").offset().top
    		 }, 2000);
     })
+
+
+    $('#unread-messages').click(function (e) {
+    	//console.log(e.target.innerText);
+    	var source = e.target.innerText.split("\n");
+    	var getTaskUrl = "/fetchMessages";
+
+    	$http.get(getTaskUrl)
+    			.then(function (response) {
+    				var msgs = response.data.data;
+
+    				for(var i = 0; i < msgs.length; i++) {
+    					if(msgs[i]["sender"] == source[0] &&
+    						msgs[i]["subject"] == source[1]) {
+    						//$scope.$apply(function () {
+    							$('#SubjectModalLabel').text(source[1]);
+    							$('#FullexampleInputEmail1').text(msgs[i]["message"]);
+    						//})
+    						break;
+    					}
+    				}
+    			});
+
+    })
+
 }]);

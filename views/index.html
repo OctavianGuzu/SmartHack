@@ -230,7 +230,7 @@
                <img class="card-img-top img-fluid w-100" src="https://i.imgur.com/wghMmfP.png" alt="">
              </a>
              <div class="card-body">
-               <h6 class="card-title mb-1"><a href="#">Peter Lupei</a></h6>
+               <h6 class="card-title mb-1"><a href="#" data-toggle="modal" data-target="#MessageModal">Peter Lupei</a></h6>
                <p class="card-text small">What about this place for a teambuilding?</p>
              </div>
            </div>
@@ -240,7 +240,7 @@
                <img class="card-img-top img-fluid w-100" src="https://phescreening.blog.gov.uk/wp-content/uploads/sites/152/2015/07/KPI_graph_illustration-620x520.png" alt="">
              </a>
              <div class="card-body">
-               <h6 class="card-title mb-1"><a href="#">Ion Popescu</a></h6>
+               <h6 class="card-title mb-1"><a href="#" data-toggle="modal" data-target="#MessageModal">Ion Popescu</a></h6>
                <p class="card-text small">We need to have a look at our KPI from last month!</p>
              </div>
            </div>
@@ -250,7 +250,7 @@
                <img class="card-img-top img-fluid w-100" src="https://i.ytimg.com/vi/Pfiz9hHfSVg/hqdefault.jpg" alt="">
              </a>
              <div class="card-body">
-               <h6 class="card-title mb-1"><a href="#">Arsenie Covaci</a></h6>
+               <h6 class="card-title mb-1"><a href="#" data-toggle="modal" data-target="#MessageModal">Arsenie Covaci</a></h6>
                <p class="card-text small">I have some issues with the feature I'm assigned to...</p>
              </div>
            </div>
@@ -260,7 +260,7 @@
                <img class="card-img-top img-fluid w-100" src="https://www.edx.org/sites/default/files/microsoft_banner1200x536.png" alt="">
              </a>
              <div class="card-body">
-               <h6 class="card-title mb-1"><a href="#">Valeriu Amariei</a></h6>
+               <h6 class="card-title mb-1"><a href="#" data-toggle="modal" data-target="#MessageModal">Valeriu Amariei</a></h6>
                <p class="card-text small">New training from Microsoft!!</p>
              </div>
            </div>
@@ -271,7 +271,7 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-bell-o"></i> Unread Messages</div>
-            <div id="unread-messages" class="list-group list-group-flush small">
+            <div id="unread-messages" class="list-group list-group-flush small"  data-toggle="modal" data-target="#MsgModal">
 
             </div>
           </div>
@@ -341,6 +341,27 @@
             <p class="text-success" ng-show="DoneSucc">Good job!</p>
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <button id="DoneBtn" type="button" class="btn btn-primary">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="MsgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="SubjectModalLabel">Subject</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="FullexampleInputEmail1" id="FullexampleInputEmail1">Message</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="DoneBtn" type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
           </div>
         </div>
       </div>
