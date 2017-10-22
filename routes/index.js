@@ -121,14 +121,29 @@ router.get('/addTask', function (req, res) {
     	Assigner: req.query.assigner,
     	"Due Date": req.query.dueDate,
     	"Date Created": getCurrentDate(),
-    	"Description": req.query.descriptionTask
+    	"Description": req.query.descriptionTask,
+    	"Priority": req.query.priority,
+    	"id": generateID()
     }, function(err, res) {
     	console.log("Inserted in db");
     	console.log(err);
+    	res.json(response);
     })
 
 
 });
+
+router.get('/doneTask', function (req, res) {
+	var response = {
+        status_code : 0,
+        status_message : "success",
+        data : ""
+    };
+
+    MongoConnectionObj.doneTask({id: parseInt(req.query.taskID, 10)}, function (err, blabla) {
+    	res.json(response);
+    })
+})
 
 var getCurrentDate = function() {
 	var dateObj = new Date();
@@ -137,6 +152,11 @@ var getCurrentDate = function() {
 	var year = dateObj.getUTCFullYear();
 
 	return year + "/" + ("0" + month).slice(-2) + "/" + day;
+}
+
+var generateID = function() {
+	var val = Math.floor(1000 + Math.random() * 9000);
+	return val;
 }
 
 module.exports = router;

@@ -74,13 +74,20 @@ MongoConnection.prototype.addTask = function (query, _cb) {
 }
 
 MongoConnection.prototype.addMessage = function (query, _cb) {
-    console.log("In query");
-
 	var db_collection = this.messagesCollection;
 
     db_collection.insertOne(query, function (err, res) {
         _cb(err, res);
     });
 };
+
+MongoConnection.prototype.doneTask = function(query, _cb) {
+	var db_collection = this.tasksCollection;
+	console.log(query);
+	db_collection.deleteOne(query, function(err, res) {
+		console.log(err);
+		_cb(err, res);
+	})
+}
 
 module.exports = MongoConnection;

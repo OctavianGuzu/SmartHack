@@ -27,6 +27,7 @@ app.use('/checkLogin', routes);
 app.use('/register', routes);
 app.use('/forgot-pass', routes);
 app.use('/addTask', routes);
+app.use('/doneTask', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

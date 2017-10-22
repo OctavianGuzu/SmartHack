@@ -56,13 +56,13 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
                 console.log(tasks);
                 for (i = 0; i < tasks.length; i++) {
                     appendToHtml += 
-                    	'<tr><td>' + tasks[i]["id"] +
-                    	'<tr><td>' + tasks[i]["name"] +
+                    	'</td><td>' + tasks[i]["id"] +
+                    	'</td><td>' + tasks[i]["name"] +
 						'</td><td>' + tasks[i]["Assignee"] +
 						'</td><td>' + tasks[i]["Assigner"] +
 						'</td><td>' + tasks[i]["Due Date"] +
-						'</td><td>' + tasks[i]["Priority"] +
 						'</td><td>' + tasks[i]["Date Created"] +
+						'</td><td>' + tasks[i]["Priority"] +
 						'</td><td>' + tasks[i]["Description"] +	'</td></tr>';
                 }
 				$('#dataTable').append(appendToHtml);
@@ -77,12 +77,14 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     $('#TaskInsertBtn').click(function (e) {
     	$scope.insertSucc = false;
 		$scope.insertFail = false;
+		$scope.DoneSucc = false;
 
     	var taskName = $('#InputNameTask').val();
     	var assignee = $('#InputAssigneeTask').val();
     	var assigner = $('#InputAssignerTask').val();
     	var dueDate = $('#InputDdateTask').val();
     	var descriptionTask = $('#InputDescriptionTask').val();
+    	var priotiryTask = $('#PrioritynTask').val();
 
     	if(taskName != "" && assignee != "" && assigner &&
     		dueDate != "" && descriptionTask != "") {
@@ -90,7 +92,8 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     				"&assignee=" + assignee +
     				"&assigner=" + assigner +
     				"&dueDate=" + dueDate +
-    				"&descriptionTask=" + descriptionTask;
+    				"&descriptionTask=" + descriptionTask +
+    				"&priority=" + priotiryTask;
     		$http.get(url)
     			.then(function(response) {
     				//TODO afisare succes pentru inserare
@@ -109,9 +112,6 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     $('#MessageSendBtn').click(function (e) {
         $scope.insertSucc = false;
         $scope.insertFail = false;
-
-        console.log("Click");
-
         var receiver = $('#InputReceiver').val();
         var subject = $('#InputSubject').val();
         var message = $('#InputMessage').val();
@@ -134,4 +134,22 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
         }
     })
 
+
+
+    $('#DoneBtn').click(function (e) {
+    	//window.location.reload();
+    	$scope.DoneSucc = false;
+    	var taskIDString = $('#IDTask').val();
+
+    	if(taskID) {
+    		var taskID = parseInt(taskIDString, 10);
+    		var url = "/doneTask?taskID=" + taskID;
+    		$http.get(url)
+    			.then(function (response) {
+    				window.location.reload();
+    			})
+    	} else {
+    		window.location.reload();
+    	}
+    })
 }]);
