@@ -234,7 +234,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     	pieChart = new CanvasJS.Chart("PieChart", {
       		animationEnabled: true,
       		title: {
-        		text: "Number of Completed Tasks"
+        		text: "Number of Ongoing Tasks"
       		},
       		data: [{
         		type: "pie",
@@ -248,4 +248,16 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 
     	pieChart.render();
     }
+
+    $('#alertsDropdown').click(function(e) {
+    	$('html, body').animate({
+        scrollTop: $("#dataTable").offset().top
+    }, 2000);
+    })
+
+    $('#messagesDropdown').click(function(e) {
+    	$('html, body').animate({
+        	scrollTop: $("#dataTable").offset().top
+   		 }, 2000);
+    })
 }]);
