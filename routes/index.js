@@ -88,4 +88,35 @@ router.get('/fetchTasks', function (req, res) {
     });
 });
 
+router.get('/addTask', function (req, res) {
+	var response = {
+        status_code : 0,
+        status_message : "success",
+        data : ""
+    };
+
+    MongoConnectionObj.addTask({
+    	name: req.query.taskName,
+    	Assignee: req.query.assignee,
+    	Assigner: req.query.assigner,
+    	"Due Date": req.query.dueDate,
+    	"Date Created": getCurrentDate(),
+    	"Description": req.query.descriptionTask
+    }, function(err, res) {
+    	console.log("Inserted in db");
+    	console.log(err);
+    })
+
+
+})
+
+var getCurrentDate = function() {
+	var dateObj = new Date();
+	var month = dateObj.getUTCMonth() + 1;
+	var day = dateObj.getUTCDate();
+	var year = dateObj.getUTCFullYear();
+
+	return year + "/" + ("0" + month).slice(-2) + "/" + day;
+}
+
 module.exports = router;

@@ -58,4 +58,12 @@ MongoConnection.prototype.queryFetchTasks = function (query, _cb) {
     })
 };
 
+MongoConnection.prototype.addTask = function (query, _cb) {
+	var db_collection = this.tasksCollection;
+
+	db_collection.insertOne(query, function (err, res) {
+		_cb(err, res);
+	});
+}
+
 module.exports = MongoConnection;
