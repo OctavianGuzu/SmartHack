@@ -115,9 +115,6 @@ router.get('/fetchMessages', function (req, res) {
 });
 
 router.get('/addMessage', function (req, res) {
-
-    console.log("In router");
-
 	var response = {
         status_code : 0,
         status_message : "success",
@@ -125,6 +122,7 @@ router.get('/addMessage', function (req, res) {
     };
 
     MongoConnectionObj.addMessage({
+		sender:req.query.sender,
         receiver: req.query.receiver,
         subject: req.query.subject,
         message: req.query.message
@@ -159,6 +157,15 @@ router.get('/addTask', function (req, res) {
 
 });
 
+router.get('/getLoggedUser', function (req, res) {
+    var response = {
+        status_code : 0,
+        status_message : "success",
+        data : globalFullName
+    };
+	res.json(response);
+});
+
 router.get('/doneTask', function (req, res) {
 	var response = {
         status_code : 0,
@@ -169,7 +176,7 @@ router.get('/doneTask', function (req, res) {
     MongoConnectionObj.doneTask({id: parseInt(req.query.taskID, 10)}, function (err, blabla) {
     	res.json(response);
     })
-})
+});
 
 var getCurrentDate = function() {
 	var dateObj = new Date();

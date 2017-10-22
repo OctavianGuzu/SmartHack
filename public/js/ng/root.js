@@ -1,5 +1,6 @@
 var root = angular.module("root", ['ngRoute']);
 var dash = angular.module("dash", ['ngRoute']);
+var globalUserName = "";
 
 root.controller("loginController", ["$scope", "$http",function( $scope, $http ) {
 	$scope.invalid_user = false;
@@ -85,7 +86,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
                         '<img class="d-flex mr-3 rounded-circle" src="https://i.imgur.com/hEHvhXv.png" alt="">' +
                         '<div class="media-body">' +
 						'<strong>' +
-						"Ion Popescu" +
+						messages[i]['sender'] +
 						'</strong>' +
 						'<br>' +
 						messages[i]['subject'] +
@@ -138,17 +139,33 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     	}
     })
 
+
+	$('#new-message').click(function(e){
+        $http.get("/getLoggedUser")
+            .then(function(response) {
+                var sender = response["data"].data;
+                console.log("Uite senderul pe care l-am gasit:");
+                console.log(sender);
+                globalUserName = sender;
+            });
+	});
+
     $('#MessageSendBtn').click(function (e) {
         $scope.insertSucc = false;
         $scope.insertFail = false;
+
+        var sender = globalUserName;
         var receiver = $('#InputReceiver').val();
         var subject = $('#InputSubject').val();
         var message = $('#InputMessage').val();
 
         if(receiver && subject && message) {
-            var url="/addMessage?receiver=" + receiver +
+            var url="/addMessage?sender=" + sender +
+				"&receiver="+ receiver +
                 "&subject=" + subject +
                 "&message=" + message;
+            console.log("Dau mai departe catre query:");
+            console.log(url);
             $http.get(url)
                 .then(function(response) {
                     $scope.$apply(function () {
