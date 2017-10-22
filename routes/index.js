@@ -53,7 +53,6 @@ router.get('/checkLogin', function (req, res) {
 						var hash = sha256(req.query.pass);
 						if(hash == data[0].pass) {
 							globalFullName = "" + data[0].prenume + " "  + data[0].nume;
-                            console.log(globalFullName);
                             loggedin = true;
 							response.data = true;
 							res.json(response);
@@ -130,7 +129,32 @@ router.get('/fetchMessages', function (req, res) {
 
     MongoConnectionObj.queryFetchMessages({receiver: globalFullName}, function(err, data) {
 
-    	if (err) {
+        if (err) {
+            response.data = false;
+            console.log("Err");
+            res.json(response);
+        } else {
+            if(data.length > 0) {
+                response.data = data;
+                res.json(response);
+            } else {
+                response.data = false;
+                res.json(response);
+            }
+        }
+    });
+});
+
+
+router.get('/fetchUsers', function (req, res) {
+    var response = {
+        status_code : 0,
+        status_message : "success",
+        data : ""
+    };
+    MongoConnectionObj.queryFetchUsers({}, function(err, data) {
+
+        if (err) {
             response.data = false;
             console.log("Err");
             res.json(response);
@@ -152,7 +176,6 @@ router.get('/addMessage', function (req, res) {
         status_message : "success",
         data : ""
     };
-
     MongoConnectionObj.addMessage({
 		sender:req.query.sender,
         receiver: req.query.receiver,
