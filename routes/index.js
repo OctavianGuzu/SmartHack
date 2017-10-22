@@ -15,6 +15,7 @@ var MongoConnectionObj = new MongoConnection(function (err) {
 });
 
 router.get('/', function (req, res) {
+	loggedin = false;
 	res.render('login');
 });
 
@@ -171,7 +172,9 @@ router.get('/doneTask', function (req, res) {
         data : ""
     };
 
-    MongoConnectionObj.doneTask({id: parseInt(req.query.taskID, 10)}, function (err, blabla) {
+    console.log(parseInt(req.query.taskID, 10));
+
+    MongoConnectionObj.doneTask({id: parseInt(req.query.taskID)}, function (err, blabla) {
     	res.json(response);
     })
 })

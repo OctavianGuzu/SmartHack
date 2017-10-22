@@ -98,8 +98,9 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     		$http.get(url)
     			.then(function(response) {
     				//TODO afisare succes pentru inserare
+    				window.location.reload();
     				$scope.$apply(function () {
-    					window.location.reload();
+    					
     					$scope.insertSucc = true;
          			});
     				
@@ -143,9 +144,8 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     	$scope.DoneSucc = false;
     	var taskIDString = $('#IDTask').val();
 
-    	if(taskID) {
-    		var taskID = parseInt(taskIDString, 10);
-    		var url = "/doneTask?taskID=" + taskID;
+    	if(taskIDString) {
+    		var url = "/doneTask?taskID=" + taskIDString;
     		$http.get(url)
     			.then(function (response) {
     				window.location.reload();
