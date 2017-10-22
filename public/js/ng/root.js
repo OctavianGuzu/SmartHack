@@ -53,7 +53,6 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 
                 var appendToHtml = "";
 				var tasks = response["data"].data;
-                console.log(tasks);
                 for (i = 0; i < tasks.length; i++) {
                     appendToHtml += 
                     	'</td><td>' + tasks[i]["id"] +
@@ -98,6 +97,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     			.then(function(response) {
     				//TODO afisare succes pentru inserare
     				$scope.$apply(function () {
+    					window.location.reload();
     					$scope.insertSucc = true;
          			});
     				

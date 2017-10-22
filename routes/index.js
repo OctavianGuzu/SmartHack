@@ -3,6 +3,7 @@ var router = express.Router();
 var MongoConnection = require( "./lib/mongo_smart" );
 var sha256 = require('sha256');
 var globalFullName = "";
+var loggedin = false;
 
 var MongoConnectionObj = new MongoConnection(function (err) {
 	if (err) {
@@ -18,7 +19,12 @@ router.get('/', function (req, res) {
 });
 
 router.get('/dashboard', function (req, res) {
-	res.render('index');
+	if(loggedin) {
+		res.render('index');
+	} else {
+		res.render('login');
+	}
+	
 });
 
 router.get('/register', function (req, res) {
@@ -47,6 +53,7 @@ router.get('/checkLogin', function (req, res) {
 						if(hash == data[0].pass) {
 							globalFullName = "" + data[0].prenume + " "  + data[0].nume;
                             console.log(globalFullName);
+                            loggedin = true;
 							response.data = true;
 							res.json(response);
 						}
@@ -124,7 +131,7 @@ router.get('/addTask', function (req, res) {
     	"Description": req.query.descriptionTask,
     	"Priority": req.query.priority,
     	"id": generateID()
-    }, function(err, res) {
+    }, function(err, data) {
     	console.log("Inserted in db");
     	console.log(err);
     	res.json(response);
