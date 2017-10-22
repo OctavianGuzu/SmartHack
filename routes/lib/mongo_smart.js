@@ -65,6 +65,18 @@ MongoConnection.prototype.queryFetchTasks = function (query, _cb) {
     })
 };
 
+MongoConnection.prototype.queryFetchMessages = function (query, _cb) {
+    var db_collection = this.messagesCollection;
+
+    db_collection.find(query).toArray(function (err, result) {
+        if(err) {
+            console.log(err);
+        } else {
+            _cb(null, result);
+        }
+    })
+};
+
 MongoConnection.prototype.addTask = function (query, _cb) {
 	var db_collection = this.tasksCollection;
 

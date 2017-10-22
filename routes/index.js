@@ -88,6 +88,32 @@ router.get('/fetchTasks', function (req, res) {
     });
 });
 
+
+router.get('/fetchMessages', function (req, res) {
+    var response = {
+        status_code : 0,
+        status_message : "success",
+        data : ""
+    };
+
+    MongoConnectionObj.queryFetchMessages({receiver: globalFullName}, function(err, data) {
+
+    	if (err) {
+            response.data = false;
+            console.log("Err");
+            res.json(response);
+        } else {
+            if(data.length > 0) {
+                response.data = data;
+                res.json(response);
+            } else {
+                response.data = false;
+                res.json(response);
+            }
+        }
+    });
+});
+
 router.get('/addMessage', function (req, res) {
 
     console.log("In router");

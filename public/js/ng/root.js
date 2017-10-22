@@ -44,6 +44,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 
 	$(document).ready(function(e) {
 		$scope.fillTasks();
+		$scope.fillMessages();
 	});
 
 	$scope.fillTasks = function() {
@@ -68,6 +69,34 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 				$('#dataTable').append(appendToHtml);
 		})
 	};
+
+    $scope.fillMessages = function() {
+        var getTaskUrl = "/fetchMessages";
+        console.log("Sunt in ready");
+        $http.get(getTaskUrl)
+            .then(function(response) {
+
+            	appendToHtml = "";
+                var appendToHtml = "";
+                var messages = response["data"].data;
+                for (i = 0; i < messages.length; i++) {
+					appendToHtml +=  '<a class="list-group-item list-group-item-action" href="#">' +
+						'<div class="media">' +
+                        '<img class="d-flex mr-3 rounded-circle" src="https://i.imgur.com/hEHvhXv.png" alt="">' +
+                        '<div class="media-body">' +
+						'<strong>' +
+						"Ion Popescu" +
+						'</strong>' +
+						'<br>' +
+						messages[i]['subject'] +
+						'</div>' +
+                        '</div>' +
+                        '</a>';
+                }
+                console.log(appendToHtml);
+                $('#unread-messages').append(appendToHtml);
+            })
+    };
 
     $('#LogoutBtn').click(function (e) {
         window.location.href = "/";
