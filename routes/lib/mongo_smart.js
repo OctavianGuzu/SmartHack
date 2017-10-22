@@ -66,4 +66,13 @@ MongoConnection.prototype.addTask = function (query, _cb) {
 	});
 }
 
+MongoConnection.prototype.doneTask = function(query, _cb) {
+	var db_collection = this.tasksCollection;
+	console.log(query);
+	db_collection.deleteOne(query, function(err, res) {
+		console.log(err);
+		_cb(err, res);
+	})
+}
+
 module.exports = MongoConnection;
