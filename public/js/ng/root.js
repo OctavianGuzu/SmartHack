@@ -41,6 +41,7 @@ root.controller("loginController", ["$scope", "$http",function( $scope, $http ) 
 dash.controller("dashboardController", ["$scope", "$http",function( $scope, $http ) {
 	$scope.insertSucc = false;
 	$scope.insertFail = false;
+	$scope.adddedUsers = false;
 	var pieChart = null;
 
 	$(document).ready(function(e) {
@@ -87,7 +88,10 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
                         appendToHtml += "<option value=" + "\"" + userFullName + "\"" + ">" + userFullName + "</option>";
                     }
                 }
-                $('#InputReceiver').append(appendToHtml);
+                if (!$scope.adddedUsers) {
+                    $('#InputReceiver').append(appendToHtml);
+                    $scope.adddedUsers = true;
+                }
             })
     };
 
