@@ -472,6 +472,39 @@
       </div>
     </div>
 
+  <div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Send new message</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Send to</label>
+            <input class="form-control" id="InputReceiver" type="text" aria-describedby="Name" placeholder="Enter receiver">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Subject</label>
+            <input class="form-control" id="InputSubject" type="text" aria-describedby="Name" placeholder="Enter subject">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Message</label>
+            <input class="form-control" id="InputMessage" type="text" aria-describedby="Name" placeholder="Enter Message">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <p class="text-success" ng-show="insertSucc">Message send!</p>
+          <p class="text-danger" ng-show="insertFail">Don't leave fields empty!</p>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button id="MessageSendBtn" type="button" class="btn btn-primary">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="modal fade" id="TaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

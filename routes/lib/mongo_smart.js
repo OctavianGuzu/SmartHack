@@ -5,6 +5,7 @@ var MongoConnection = function (callback) {
 	this.db = null;
 	this.usersCollection = null;
 	this.tasksCollection = null;
+	this.messagesCollection = null;
 
 	var self = this;
 
@@ -26,6 +27,12 @@ var MongoConnection = function (callback) {
                         cb(null);
                     })
 				},
+                Messages: function (cb) {
+                    db.collection('messages', function(err, collection) {
+                        self.messagesCollection = collection;
+                        cb(null);
+                    })
+                },
 				Final: function(cb) {
 					callback(null, db);
 				}
@@ -65,5 +72,15 @@ MongoConnection.prototype.addTask = function (query, _cb) {
 		_cb(err, res);
 	});
 }
+
+MongoConnection.prototype.addMessage = function (query, _cb) {
+    console.log("In query");
+
+	var db_collection = this.messagesCollection;
+
+    db_collection.insertOne(query, function (err, res) {
+        _cb(err, res);
+    });
+};
 
 module.exports = MongoConnection;

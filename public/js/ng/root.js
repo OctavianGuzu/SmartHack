@@ -105,4 +105,33 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
          	});
     	}
     })
+
+    $('#MessageSendBtn').click(function (e) {
+        $scope.insertSucc = false;
+        $scope.insertFail = false;
+
+        console.log("Click");
+
+        var receiver = $('#InputReceiver').val();
+        var subject = $('#InputSubject').val();
+        var message = $('#InputMessage').val();
+
+        if(receiver && subject && message) {
+            var url="/addMessage?receiver=" + receiver +
+                "&subject=" + subject +
+                "&message=" + message;
+            $http.get(url)
+                .then(function(response) {
+                    $scope.$apply(function () {
+
+                    });
+
+                })
+        } else {
+            $scope.$apply(function () {
+
+            });
+        }
+    })
+
 }]);

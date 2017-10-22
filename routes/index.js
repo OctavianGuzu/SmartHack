@@ -88,6 +88,26 @@ router.get('/fetchTasks', function (req, res) {
     });
 });
 
+router.get('/addMessage', function (req, res) {
+
+    console.log("In router");
+
+	var response = {
+        status_code : 0,
+        status_message : "success",
+        data : ""
+    };
+
+    MongoConnectionObj.addMessage({
+        receiver: req.query.receiver,
+        subject: req.query.subject,
+        message: req.query.message
+    }, function(err, respond) {
+        console.log("Inserted in db");
+        console.log(err);
+        res.json(response);
+    })});
+
 router.get('/addTask', function (req, res) {
 	var response = {
         status_code : 0,
@@ -108,7 +128,7 @@ router.get('/addTask', function (req, res) {
     })
 
 
-})
+});
 
 var getCurrentDate = function() {
 	var dateObj = new Date();
