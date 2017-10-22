@@ -1,5 +1,6 @@
 var root = angular.module("root", ['ngRoute']);
 var dash = angular.module("dash", ['ngRoute']);
+var globalUserName = "";
 
 root.controller("loginController", ["$scope", "$http",function( $scope, $http ) {
 	$scope.invalid_user = false;
@@ -46,6 +47,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 	$(document).ready(function(e) {
 		$scope.fillTasks();
 		$scope.loadChart();
+		$scope.fillMessages();
 	});
 
 	$scope.fillTasks = function() {
@@ -69,6 +71,34 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 				$('#dataTable').append(appendToHtml);
 		})
 	};
+
+    $scope.fillMessages = function() {
+        var getTaskUrl = "/fetchMessages";
+        console.log("Sunt in ready");
+        $http.get(getTaskUrl)
+            .then(function(response) {
+
+            	appendToHtml = "";
+                var appendToHtml = "";
+                var messages = response["data"].data;
+                for (i = 0; i < messages.length; i++) {
+					appendToHtml +=  '<a class="list-group-item list-group-item-action" href="#">' +
+						'<div class="media">' +
+                        '<img class="d-flex mr-3 rounded-circle" src="https://i.imgur.com/hEHvhXv.png" alt="">' +
+                        '<div class="media-body">' +
+						'<strong>' +
+						messages[i]['sender'] +
+						'</strong>' +
+						'<br>' +
+						messages[i]['subject'] +
+						'</div>' +
+                        '</div>' +
+                        '</a>';
+                }
+                console.log(appendToHtml);
+                $('#unread-messages').append(appendToHtml);
+            })
+    };
 
     $('#LogoutBtn').click(function (e) {
         window.location.href = "/";
@@ -112,17 +142,33 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     	}
     })
 
+
+	$('#new-message').click(function(e){
+        $http.get("/getLoggedUser")
+            .then(function(response) {
+                var sender = response["data"].data;
+                console.log("Uite senderul pe care l-am gasit:");
+                console.log(sender);
+                globalUserName = sender;
+            });
+	});
+
     $('#MessageSendBtn').click(function (e) {
         $scope.insertSucc = false;
         $scope.insertFail = false;
+
+        var sender = globalUserName;
         var receiver = $('#InputReceiver').val();
         var subject = $('#InputSubject').val();
         var message = $('#InputMessage').val();
 
         if(receiver && subject && message) {
-            var url="/addMessage?receiver=" + receiver +
+            var url="/addMessage?sender=" + sender +
+				"&receiver="+ receiver +
                 "&subject=" + subject +
                 "&message=" + message;
+            console.log("Dau mai departe catre query:");
+            console.log(url);
             $http.get(url)
                 .then(function(response) {
                     $scope.$apply(function () {
@@ -157,7 +203,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 
     $scope.loadChart = function () {
     	var url = "/fetchTasksAll";
-    	
+
 
     	$http.get(url)
     		.then(function (response) {
@@ -196,7 +242,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
         		yValueFormatString: "##0\"\"",
         		indexLabel: "{label} {y}",
         		dataPoints: chartData
-        		
+
       		}]
     	});
 

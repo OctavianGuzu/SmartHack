@@ -25,7 +25,7 @@ router.get('/dashboard', function (req, res) {
 	} else {
 		res.render('login');
 	}
-	
+
 });
 
 router.get('/register', function (req, res) {
@@ -120,10 +120,33 @@ router.get('/fetchTasksAll', function (req, res) {
     });
 });
 
+
+router.get('/fetchMessages', function (req, res) {
+    var response = {
+        status_code : 0,
+        status_message : "success",
+        data : ""
+    };
+
+    MongoConnectionObj.queryFetchMessages({receiver: globalFullName}, function(err, data) {
+
+    	if (err) {
+            response.data = false;
+            console.log("Err");
+            res.json(response);
+        } else {
+            if(data.length > 0) {
+                response.data = data;
+                res.json(response);
+            } else {
+                response.data = false;
+                res.json(response);
+            }
+        }
+    });
+});
+
 router.get('/addMessage', function (req, res) {
-
-    console.log("In router");
-
 	var response = {
         status_code : 0,
         status_message : "success",
@@ -131,6 +154,7 @@ router.get('/addMessage', function (req, res) {
     };
 
     MongoConnectionObj.addMessage({
+		sender:req.query.sender,
         receiver: req.query.receiver,
         subject: req.query.subject,
         message: req.query.message
@@ -165,6 +189,15 @@ router.get('/addTask', function (req, res) {
 
 });
 
+router.get('/getLoggedUser', function (req, res) {
+    var response = {
+        status_code : 0,
+        status_message : "success",
+        data : globalFullName
+    };
+	res.json(response);
+});
+
 router.get('/doneTask', function (req, res) {
 	var response = {
         status_code : 0,
@@ -177,7 +210,7 @@ router.get('/doneTask', function (req, res) {
     MongoConnectionObj.doneTask({id: parseInt(req.query.taskID)}, function (err, blabla) {
     	res.json(response);
     })
-})
+});
 
 var getCurrentDate = function() {
 	var dateObj = new Date();
