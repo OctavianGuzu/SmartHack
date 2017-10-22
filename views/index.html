@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>My Crew</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -21,26 +21,26 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-controller="dashboardController">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="#">My Crew - Team Organizer</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="#">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="#">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Charts</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="#">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Tables</span>
           </a>
@@ -52,10 +52,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">Navbar</a>
+              <a href="#">Navbar</a>
             </li>
             <li>
-              <a href="cards.html">Cards</a>
+              <a href="#">Cards</a>
             </li>
           </ul>
         </li>
@@ -66,16 +66,16 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.html">Login Page</a>
+              <a href="#">Login Page</a>
             </li>
             <li>
-              <a href="register.html">Registration Page</a>
+              <a href="#">Registration Page</a>
             </li>
             <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
+              <a href="#">Forgot Password Page</a>
             </li>
             <li>
-              <a href="blank.html">Blank Page</a>
+              <a href="#">Blank Page</a>
             </li>
           </ul>
         </li>
@@ -400,12 +400,8 @@
             </div>
           </div>
           <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
-            <div class="card-body">
-              <canvas id="myPieChart" width="100%" height="100"></canvas>
+            <div id="PieChart" ></div>
             </div>
-          </div>
 
 
       </div>
@@ -423,7 +419,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2017</small>
+          <small>Copyright © Xor the World 2017</small>
         </div>
       </div>
     </footer>
@@ -498,10 +494,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <p class="text-success" ng-show="insertSucc">Message send!</p>
-          <p class="text-danger" ng-show="insertFail">Don't leave fields empty!</p>
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <button id="MessageSendBtn" type="button" class="btn btn-primary">Done</button>
+          <button id="MessageSendBtn" type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
         </div>
       </div>
     </div>
@@ -578,6 +572,8 @@
     <script src="vendor/angular/angular-route.js"></script>
 
     <script src="js/ng/root.js"></script>
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     </div>
 </body>

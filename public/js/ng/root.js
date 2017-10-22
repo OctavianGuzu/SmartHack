@@ -42,9 +42,11 @@ root.controller("loginController", ["$scope", "$http",function( $scope, $http ) 
 dash.controller("dashboardController", ["$scope", "$http",function( $scope, $http ) {
 	$scope.insertSucc = false;
 	$scope.insertFail = false;
+	var pieChart = null;
 
 	$(document).ready(function(e) {
 		$scope.fillTasks();
+		$scope.loadChart();
 		$scope.fillMessages();
 	});
 
@@ -55,7 +57,6 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
 
                 var appendToHtml = "";
 				var tasks = response["data"].data;
-                console.log(tasks);
                 for (i = 0; i < tasks.length; i++) {
                     appendToHtml += 
                     	'</td><td>' + tasks[i]["id"] +
@@ -128,6 +129,7 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     			.then(function(response) {
     				//TODO afisare succes pentru inserare
     				$scope.$apply(function () {
+    					window.location.reload();
     					$scope.insertSucc = true;
          			});
     				
@@ -198,4 +200,52 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
     		window.location.reload();
     	}
     })
+
+    $scope.loadChart = function () {
+    	var url = "/fetchTasksAll";
+
+
+    	$http.get(url)
+    		.then(function (response) {
+    			var users = response.data.data;
+    			var usersCount = {};
+
+    			for(var i = 0; i < users.length; i++) {
+    				if(usersCount[users[i]["Assignee"]]) {
+    					usersCount[users[i]["Assignee"]] ++;
+    				} else {
+    					usersCount[users[i]["Assignee"]] = 1;
+    				}
+    			}
+
+    			//console.log(usersCount);
+
+    			var chartData = [];
+
+    			for(var key in usersCount) {
+    				chartData.push({y: usersCount[key], label: key});
+    			}
+
+    			$scope.showChart(chartData);
+    		})
+    }
+
+    $scope.showChart = function (chartData) {
+    	pieChart = new CanvasJS.Chart("PieChart", {
+      		animationEnabled: true,
+      		title: {
+        		text: "Number of Completed Tasks"
+      		},
+      		data: [{
+        		type: "pie",
+        		startAngle: 0,
+        		yValueFormatString: "##0\"\"",
+        		indexLabel: "{label} {y}",
+        		dataPoints: chartData
+
+      		}]
+    	});
+
+    	pieChart.render();
+    }
 }]);
