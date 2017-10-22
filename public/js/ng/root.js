@@ -260,4 +260,16 @@ dash.controller("dashboardController", ["$scope", "$http",function( $scope, $htt
         	scrollTop: $("#dataTable").offset().top
    		 }, 2000);
     })
+
+    $('#NavCharts').click(function(e) {
+    	$('html, body').animate({
+        	scrollTop: $("#myAreaChart").offset().top
+   		 }, 2000);
+    })
+
+    $('#NavTables').click(function(e) {
+    	$('html, body').animate({
+        	scrollTop: $("#new-message").offset().top
+   		 }, 2000);
+    })
 }]);
